@@ -1,20 +1,13 @@
 // Update with your config settings.
 
-/**
- * @type { Object.<string, import("knex").Knex.Config> }
- */
 require("dotenv").config();
 
 module.exports = {
-
    production: {
     client: "pg",
     connectionString: process.env.DATABASE_URL,
     dialectOptions: {
-    ssl: {
-      require: true, // This will help you. But you will see nwe error
-      rejectUnauthorized: false // This line will fix new error
-    }
+    ssl: { rejectUnauthorized: false },
   },
     migrations: {
       directory: "./migrations",
@@ -25,12 +18,7 @@ module.exports = {
  development: {
     client: "pg",
     connectionString: process.env.DATABASE_URL,
-    dialectOptions: {
-    ssl: {
-      require: true, // This will help you. But you will see nwe error
-      rejectUnauthorized: false // This line will fix new error
-    }
-  },
+    ssl: { rejectUnauthorized: false },
     migrations: {
       directory: "./migrations",
     },
