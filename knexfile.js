@@ -9,7 +9,7 @@ module.exports = {
 
    production: {
     client: "pg",
-    connection: process.env.DATABASE_URL,
+    connectionString: process.env.DATABASE_URL,
     dialectOptions: {
     ssl: {
       require: true, // This will help you. But you will see nwe error
@@ -24,7 +24,7 @@ module.exports = {
 
  development: {
     client: "pg",
-    connection: process.env.DATABASE_URL,
+    connectionString: process.env.DATABASE_URL,
     dialectOptions: {
     ssl: {
       require: true, // This will help you. But you will see nwe error
