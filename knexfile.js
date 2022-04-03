@@ -10,7 +10,12 @@ module.exports = {
  development: {
     client: "pg",
     connection: process.env.DATABASE_URL,
-    ssl: { rejectUnauthorized: false },
+    dialectOptions: {
+    ssl: {
+      require: true, // This will help you. But you will see nwe error
+      rejectUnauthorized: false // This line will fix new error
+    }
+  },
     migrations: {
       directory: "./migrations",
     },
@@ -36,7 +41,12 @@ module.exports = {
   production: {
     client: "pg",
     connection: process.env.DATABASE_URL,
-    ssl: { rejectUnauthorized: false },
+    dialectOptions: {
+    ssl: {
+      require: true, // This will help you. But you will see nwe error
+      rejectUnauthorized: false // This line will fix new error
+    }
+  },
     migrations: {
       directory: "./migrations",
     },
