@@ -1,10 +1,11 @@
 // Update with your config settings.
-require("dotenv").config();
-console.log(process.env);
+//require("dotenv").config();
+import dotenv from "dotenv";
+dotenv.config();
 
 module.exports = {
   production: {
-    client: "postgres",
+    client: "pg",
     connectionString: process.env.DATABASE_URL,
     ssl: { rejectUnauthorized: false },
     migrations: {
@@ -14,7 +15,7 @@ module.exports = {
   },
 
   development: {
-    client: "postgres",
+    client: "pg",
     connectionString: process.env.DATABASE_URL,
     ssl: { rejectUnauthorized: false },
     migrations: {
