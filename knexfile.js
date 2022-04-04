@@ -5,12 +5,12 @@ module.exports = {
   
    production: {
     client: "pg",
-    connection: process.env.DATABASE_URL,
+    connectionString: process.env.DATABASE_URL,
     ssl: { rejectUnauthorized: false },
     migrations: {
       directory: "./data/migrations",
     },
-    seeds: { directory: "./data/seeds" },
+    // seeds: { directory: "./data/seeds" },
   },
 
   development: {
@@ -20,7 +20,7 @@ module.exports = {
     migrations: {
       directory: "./data/migrations",
     },
-    seeds: { directory: "./data/seeds" },
+    // seeds: { directory: "./data/seeds" },
   },
 
   testing: {
