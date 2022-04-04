@@ -1,8 +1,5 @@
 // Update with your config settings.
-//require("dotenv").config();
-import dotenv from "dotenv";
-dotenv.config();
-
+require("dotenv").config();
 module.exports = {
   production: {
     client: "pg",
