@@ -5,7 +5,7 @@ console.log(process.env);
 module.exports = {
   production: {
     client: "postgres",
-    connectionString: process.env.DATABASE_URL,
+    connectionString: process.env.HEROKU_POSTGRESQL_BROWN_URL,
     ssl: { rejectUnauthorized: false },
     migrations: {
       directory: "./data/migrations",
@@ -15,7 +15,7 @@ module.exports = {
 
   development: {
     client: "postgres",
-    connectionString: process.env.DATABASE_URL,
+    connectionString: process.env.HEROKU_POSTGRESQL_BROWN_URL,
     ssl: { rejectUnauthorized: false },
     migrations: {
       directory: "./data/migrations",
@@ -25,7 +25,7 @@ module.exports = {
 
   testing: {
     client: "pg",
-    connectionString: process.env.DATABASE_URL,
+    connectionString: process.env.HEROKU_POSTGRESQL_BROWN_URL,
     ssl: {
       rejectUnauthorized: process.env.ssl,
     },
