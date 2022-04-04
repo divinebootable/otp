@@ -5,7 +5,7 @@ require("dotenv").config();
 module.exports = {
   
    production: {
-    client: "pg",
+    client: "postgresql",
     connectionString: process.env.DATABASE_URL,
     ssl: {
       require: true, 
@@ -18,7 +18,7 @@ module.exports = {
   },
 
  development: {
-    client: "pg",
+    client: "postgresql",
     connectionString: process.env.DATABASE_URL,
     ssl: { 
       rejectUnauthorized: false
