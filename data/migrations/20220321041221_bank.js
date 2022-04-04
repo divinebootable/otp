@@ -1,4 +1,3 @@
-
 exports.up = function(knex, promise) {
 	return knex.schema
 	.createTable('users', function(table) {
