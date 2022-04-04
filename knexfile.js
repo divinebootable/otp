@@ -2,8 +2,7 @@
 require("dotenv").config();
 
 module.exports = {
-  
-   production: {
+  production: {
     client: "pg",
     connectionString: process.env.DATABASE_URL,
     ssl: { rejectUnauthorized: false },
@@ -25,7 +24,7 @@ module.exports = {
 
   testing: {
     client: "pg",
-    connectionString: process.env.connection,
+    connectionString: process.env.DATABASE_URL,
     ssl: {
       rejectUnauthorized: process.env.ssl,
     },
@@ -33,6 +32,5 @@ module.exports = {
       directory: "./data/migrations",
     },
     seeds: { directory: "./data/seeds" },
-  }
-
+  },
 };
