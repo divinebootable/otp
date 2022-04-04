@@ -342,6 +342,7 @@ const verificationMail = (email, code)=>{
 
 
 const createAccount = (req, res, otp) => {
+   console.log(req.body)
    const value = otpGenerator.generate(6, { upperCaseAlphabets: false, specialChars: false });
     otp = value;
   const{
