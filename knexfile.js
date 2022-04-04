@@ -1,50 +1,38 @@
 // Update with your config settings.
-
 require("dotenv").config();
 
 module.exports = {
   
    production: {
-    client: "postgresql",
+    client: "pg",
+    connection: process.env.DATABASE_URL,
+    ssl: { rejectUnauthorized: false },
+    migrations: {
+      directory: "./data/migrations",
+    },
+    seeds: { directory: "./data/seeds" },
+  },
+
+  development: {
+    client: "pg",
     connectionString: process.env.DATABASE_URL,
+    ssl: { rejectUnauthorized: false },
+    migrations: {
+      directory: "./data/migrations",
+    },
+    seeds: { directory: "./data/seeds" },
+  },
+
+  testing: {
+    client: "pg",
+    connectionString: process.env.connection,
     ssl: {
-      require: true, 
-      rejectUnauthorized: false
-       },
+      rejectUnauthorized: process.env.ssl,
+    },
     migrations: {
       directory: "./data/migrations",
     },
     seeds: { directory: "./data/seeds" },
-  },
-
- development: {
-    client: "postgresql",
-    connectionString: process.env.DATABASE_URL,
-    ssl: { 
-      rejectUnauthorized: false
-       },
-    migrations: {
-      directory: "./data/migrations",
-    },
-    seeds: { directory: "./data/seeds" },
-  },
-
-  staging: {
-    client: 'postgresql',
-    connection: {
-      database: 'my_db',
-      user:     'username',
-      password: 'password'
-    },
-    pool: {
-      min: 2,
-      max: 10
-    },
-    migrations: {
-      tableName: 'knex_migrations'
-    }
-  },
-
- 
+  }
 
 };
