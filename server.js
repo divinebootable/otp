@@ -5,7 +5,7 @@
  * Author: Monyuy Divine Kongadzem
  */
 const app = require("./src/app");
-require("dotenv").config();
+//require("dotenv").config();
 
 
 const port = process.env.PORT || 8080;
