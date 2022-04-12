@@ -1,16 +1,6 @@
 // Update with your config settings.
 //require("dotenv").config();
 module.exports = {
-  production: {
-    client: "pg",
-    connectionString: process.env.DATABASE_URL,
-    ssl: { rejectUnauthorized: false },
-    migrations: {
-      directory: "./data/migrations",
-    },
-    seeds: { directory: "./data/seeds" },
-  },
-
   development: {
     client: "pg",
     connectionString: process.env.DATABASE_URL,
@@ -26,6 +16,16 @@ module.exports = {
     connectionString: process.env.DATABASE_URL,
     ssl: {
       rejectUnauthorized: false },
+    migrations: {
+      directory: "./data/migrations",
+    },
+    seeds: { directory: "./data/seeds" },
+  },
+
+   production: {
+    client: "pg",
+    connectionString: process.env.DATABASE_URL,
+    ssl: { rejectUnauthorized: false },
     migrations: {
       directory: "./data/migrations",
     },
