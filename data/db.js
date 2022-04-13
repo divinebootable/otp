@@ -10,4 +10,4 @@ const db = knex({
 });
 
 
-module.exports = knex(db);
+module.exports = db;
