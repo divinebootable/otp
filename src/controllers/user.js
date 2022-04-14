@@ -416,6 +416,7 @@ const signIn = (req, res)=>{
   console.log(req.body)
      db.select('email', 'hash').from("users")
     .where('email','=',req.body.email)
+    .where("is_block", true)
     .then(data=>{
       const isValid = bcrypt.compareSync(req.body.password,data[0].hash);
       if(isValid){
