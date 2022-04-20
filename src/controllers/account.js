@@ -23,7 +23,6 @@ const getAccountId = (req, res) => {
       "accounts.created_on"
     )
     .where("accounts.users", users)
-    .where("expenses.is_delete", false)
     .then((data) => {
       if (data) {
         res.status(200).json(data);
@@ -39,12 +38,10 @@ const getAllAccount = (req, res) => {
     .join("users", "accounts.users", "=", "users.users_id")
     .select(
       "accounts.account_id",
-      "eaccounts.balance",
+      "accounts.balance",
       "users.email",
       "accounts.created_on"
     )
-    .where("accounts.users", users)
-    .where("expenses.is_delete", false)
     .then((data) => {
       if (data) {
         res.status(200).json(data);
