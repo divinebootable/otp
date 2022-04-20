@@ -1,4 +1,6 @@
 
+const db = require("../../data/db");
+
 const creditAcount = (req, res) => {
   const { balance, users, created_on } = req.body;
   console.log(req.body);
@@ -34,16 +36,22 @@ const getAccountId = (req, res) => {
 };
 
 const getAllAccount = (req, res) => {
-   db.select("*")
-    .from("accounts")
+  db("accounts")
+    .join("users", "accounts.users", "=", "users.users_id")
+    .select(
+      "accounts.account_id",
+      "accounts.balance",
+      "users.email",
+      "accounts.created_on"
+    )
     .then((data) => {
-      res.status(200).json(data);
+      if (data) {
+        res.status(200).json(data);
+      } else {
+        res.status(400).json("Not found");
+      }
     })
-    .catch((err) =>
-      res.status(500).json({
-        dbError: "Unbale to get users",
-      })
-    );
+    .catch((err) => res.status(400).json({ Error: "bad request" }));
 };
 
 
