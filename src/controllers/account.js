@@ -34,22 +34,16 @@ const getAccountId = (req, res) => {
 };
 
 const getAllAccount = (req, res) => {
-  db("accounts")
-    .join("users", "accounts.users", "=", "users.users_id")
-    .select(
-      "accounts.account_id",
-      "accounts.balance",
-      "users.email",
-      "accounts.created_on"
-    )
+   db.select("*")
+    .from("accounts")
     .then((data) => {
-      if (data) {
-        res.status(200).json(data);
-      } else {
-        res.status(400).json("Not found");
-      }
+      res.status(200).json(data);
     })
-    .catch((err) => res.status(400).json({ Error: "bad request" }));
+    .catch((err) =>
+      res.status(500).json({
+        dbError: "Unbale to get users",
+      })
+    );
 };
 
 
