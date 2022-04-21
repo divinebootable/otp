@@ -35,10 +35,10 @@ app.use("/api/", accountRoute);
 // })
 
 app.post('/api/upload', (req, res)=>{
-	 console.log(req)
-    const { users, created_on } = req.body;
+	 const {name, data} = req.files.pic;
+     const { users, created_on } = req.body;
      db("userImage")
-    .insert({ name:req.files.pic.name, data:req.files.pic.data, users:users, created_on:created_on })
+    .insert({ name:name, data:data, users:users, created_on:created_on })
     .returning("*")
     .then((data) => {
       res.senStatus(200);
