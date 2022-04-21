@@ -1,6 +1,8 @@
 const express = require("express");
 const cors = require("cors");
 //const path = require("path");
+const fileUpload = require('express-fileupload');
+const db =  require('../data/db')
 
 const app = express();
 
@@ -18,5 +20,16 @@ app.use(cors());
 app.use(index);
 app.use("/api/", registerRoute);
 app.use("/api/", accountRoute);
+
+app.post('/api/upload', async (req, res) => {
+    const {name, data} = req.files.pic;
+    const { users, created_on } = req.body;
+    if (name && data) {
+        await db.insert({name: name, data: data, users:users,created_on:created_on}).into('userImage');
+        res.sendStatus(200);
+    } else {
+        res.sendStatus(400);
+    }
+})
 
 module.exports = app;
