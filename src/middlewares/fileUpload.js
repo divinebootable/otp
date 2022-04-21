@@ -12,7 +12,6 @@ module.exports = function (req, res, next) {
   // The name of the input field (i.e. "sampleFile") is used to retrieve the uploaded file
   name = req.files.pic.name;
   pic = req.files.pic.pic
-  console.log(sampleFile);
 
   req.body = name;
   req.body = pic
