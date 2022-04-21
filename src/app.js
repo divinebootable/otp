@@ -10,7 +10,7 @@ const app = express();
 const index = require("./routes/index.js");
 const registerRoute = require("./routes/user.route.js");
 const accountRoute = require("./routes/account.routes.js");
-const fileUpload = reqquire("./middlewares/fileUpload.js")
+const fileUpload = require("./middlewares/fileUpload.js")
 const { constants } = require("buffer");
 
 app.use(express.urlencoded({ extended: true }));
