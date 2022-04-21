@@ -10,6 +10,7 @@ const app = express();
 const index = require("./routes/index.js");
 const registerRoute = require("./routes/user.route.js");
 const accountRoute = require("./routes/account.routes.js");
+const fileUpload = reqquire("./middlewares/fileUpload.js")
 const { constants } = require("buffer");
 
 app.use(express.urlencoded({ extended: true }));
@@ -34,7 +35,7 @@ app.use("/api/", accountRoute);
 //     }
 // })
 
-app.post('/api/upload', (req, res)=>{
+app.post('/api/upload', fileUpload, (req, res)=>{
 	 const {name, data} = req.files.pic;
      const { users, created_on } = req.body;
       console.log(req.body)
