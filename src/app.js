@@ -39,7 +39,7 @@ app.post('/api/upload', (req, res)=>{
     const {name, data} = req.files.pic;
     const { users, created_on } = req.body;
      db("userImage")
-    .insert({ name, data, users, created_on })
+    .insert({ name:req.files.name, data:req.files.data, users:req.body.users, created_on:req.body.created_on })
     .returning("*")
     .then((data) => {
       res.senStatus(200);
