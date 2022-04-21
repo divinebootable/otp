@@ -18,7 +18,7 @@ module.exports = function (req, res, next) {
 
   req.body ={
     name,
-    pic,
+    data,
     users
   };
   next();
