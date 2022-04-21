@@ -39,8 +39,7 @@ app.post('/api/upload', (req, res)=>{
      const { users, created_on } = req.body;
      db("userImage")
     .insert({ name:name, data:data, users:users, created_on:created_on })
-    .returning("*")
-    .then((data) => {
+    .then((res) => {
       res.senStatus(200);
     })
     .catch((err) => res.status(400).json({ Error: "bad request" }));
