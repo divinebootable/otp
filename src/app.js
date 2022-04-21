@@ -36,8 +36,8 @@ app.use("/api/", accountRoute);
 // })
 
 app.post('/api/upload', fileUpload, (req, res)=>{
+	console.log(req)
      const { name, data, users, created_on } = req.body;
-      console.log(req.body)
      db("userImage")
     .insert({ name, data,users,created_on })
     .then((res) => {
